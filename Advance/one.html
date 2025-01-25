@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XMLHttpRequest Example</title>
+</head>
+
+<body style="background-color: #212121; color: white;">
+    <h2>Check Console for API Response</h2>
+</body>
+
+<script>
+    const requestUrl = 'https://api.github.com/users/hiteshchoudhary'; // Fixed URL
+    const xhr = new XMLHttpRequest();
+
+    xhr.open('GET', requestUrl, true); // Use 'true' for asynchronous requests
+
+    xhr.onreadystatechange = function() {
+        console.log(`ReadyState: ${xhr.readyState}`); // Log each readyState change
+
+        // Check if request is complete and successful
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log(JSON.parse(xhr.responseText)); // Log response data
+        } else if (xhr.readyState === 4) {
+            console.error('Error: ', xhr.statusText); // Handle errors
+        }
+    };
+
+    xhr.send(); // Send the request
+</script>
+
+</html>
